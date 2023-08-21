@@ -1,89 +1,141 @@
-# 星合の空
+# ⚠️ Unmaintained ⚠️
 
-欢迎访问我的主页！下面向你介绍一下我吧\~
+# Prologue - Jekyll Theme
 
-<!-- .slide -->
+[![Gem Version](https://badge.fury.io/rb/jekyll-theme-prologue.svg)](https://badge.fury.io/rb/jekyll-theme-prologue)
 
-## Contact
+![Prologue Theme](assets/images/screenshot.png "Prologue Theme Screenshot")
 
-- Address
-  - **Sun Yat-sen University - 132 Waihuan East Rd. - Guangzhou, China**
-- Site
-  - **<https://wu-kan.cn>**
-- [Resume](https://resume.wu-kan.cn/index.pdf)
+This is Prologue, a simple, single page responsive site template from [HTML5 UP](https://html5up.net/prologue), now available as a blog-aware Jekyll theme from [Chris Bobbe](https://chrisbobbe.github.io). It features a clean, minimalistic design and a sticky sidebar with navigation-linked scrolling.
 
-<!-- .slide vertical=true -->
+**Demo**: https://chrisbobbe.github.io/jekyll-theme-prologue/
 
-- Phone
-  - **+86 18756280097**
-- WeChat
-  - **Wu-\_-Kan**
-- E-mail:
-  - **[i[at]wu-kan.cn](mailto:i@wu-kan.cn)**
-  - **[wukan3[at]mail2.sysu.edu.cn](mailto:wukan3@mail2.sysu.edu.cn)**
+# Added Features
 
-<!-- .slide -->
+* **Blogging and multi-page features you expect from Jekyll**
+* Compatible with GitHub Pages
+* **[Formspree.io](https://formspree.io/) contact form integration** - just add your email to the `_config.yml` and it works!
+* Build your homepage with **custom scrolly sections** in the _sections folder
+ * Set a **cover photo** for any section (not just the first), with alt text for screen readers and SEO
+* Add your **social profiles** easily in `_config.yml`.
+* Automatic search engine optimization (SEO) **meta tags** based on info you provide in `_config.yml` and frontmatter
+* **Google Analytics** built-in; just put your [Tracking ID](https://support.google.com/analytics/answer/1008080?hl=en) in `_config.yml` as `google_analytics`
+* Custom **404 page** (called 404.html; to activate, move it to your project directory).
 
-## Projects
+# Installation
 
-<!-- .slide vertical=true -->
+There are two ways to get started (choose one):
 
-- [HPL-AI](https://wu-kan.cn/2021/03/14/HPL-AI/)[![Star](https://img.shields.io/github/stars/wu-kan/HPL-AI.svg)](https://github.com/wu-kan/HPL-AI)[![Fork](https://img.shields.io/github/forks/wu-kan/HPL-AI.svg)](https://github.com/wu-kan/HPL-AI/fork)
-  - An implementation of HPL-AI Mixed-Precision Benchmark based on hpl-2.3.
-  - Graduation design for undergraduate thesis.
+1. **Install the [jekyll-theme-prologue gem](https://rubygems.org/gems/jekyll-theme-prologue).** Instructions are in the [Jekyll docs](https://jekyllrb.com/docs/themes/#installing-a-theme). After running `bundle install`, you can find the theme files by running `open $(bundle show jekyll-theme-prologue)`.  A sample working `_config.yml` file ships with the gem; if you want to activate it, move it to your project's root directory. It will do nothing until you move it there, replacing the default `_config.yml` file.
+2. **Fork or clone the [GitHub repository](https://github.com/chrisbobbe/jekyll-theme-prologue).** If you want to use [GitHub Pages](https://pages.github.com/), create a branch named `gh-pages`, and replace `theme: jekyll-theme-prologue` with `remote_theme: chrisbobbe/jekyll-theme-prologue` in the provided `_config.yml` ([GitHub Pages now supports open-source themes on GitHub](https://github.com/blog/2464-use-any-theme-with-github-pages)).
 
-<!-- .slide vertical=true -->
+Next, make sure that `url` and `base_url` are set for your own website in `_config.yml`. For local testing, make them both blank. Add a photo avatar to your project, then set `avatar: path/to/your/avatar.jpg` in _config.yml; for example, `avatar: assets/images/avatar.jpg` (48x48 pixels works best). Poke around the sample `_config.yml` file to see how you can add your social profiles.
 
-- [SYsU-lang](https://arcsysu.github.io/SYsU-lang/)[![Star](https://img.shields.io/github/stars/arcsysu/SYsU-lang.svg)](https://github.com/arcsysu/SYsU-lang)[![Fork](https://img.shields.io/github/forks/arcsysu/SYsU-lang.svg)](https://github.com/arcsysu/SYsU-lang/fork)
-  - A mini, simple and modular compiler for SYsU (a tiny C language).
-  - Based on flex, bison and LLVM.
+# Build your homepage
 
-<!-- .slide vertical=true -->
+1. **Your `_config.yml` file must include the following line or your homepage won't work**: `collections: [sections]`. This tells Jekyll to look in the _sections folder (which you will create) for your content and render it all on one page.
 
-- [jekyll-theme-WuK](https://jekyll-theme-WuK.wu-kan.cn/)[![Star](https://img.shields.io/github/stars/wu-kan/wu-kan.github.io.svg)](https://github.com/wu-kan/wu-kan.github.io)[![Fork](https://img.shields.io/github/forks/wu-kan/wu-kan.github.io.svg)](https://github.com/wu-kan/wu-kan.github.io/fork)
-  - A static blog system with content-first, sliding sidebar theme.
-  - Powered by Jekyll.
+2. **Create a `_sections` folder** in your project's root directory and start adding content to your homepage. Set a cover photo in any of the sections by adding `cover-photo: path/to/photo.jpg` and `cover-photo-alt: your alt text here` to the section's frontmatter. Sample content is provided in the [GitHub repository](https://github.com/chrisbobbe/jekyll-theme-prologue/tree/master/_sections).
 
-<!-- .slide -->
+All new sections should be added as html or Markdown documents in the `_sections` folder. The following section variables can be set with [frontmatter](https://jekyllrb.com/docs/frontmatter/):
+- `title` (required)
+- `order` (required; orders the sequence of sections on the page. Example: `1`)
+- `cover-photo` (optional; sets a background image for the section. Example: `assets/images/banner.jpg`)
+- `cover-photo-alt` (required if using a cover photo. Describes the photo for screen readers and SEO; e.g. "Dome of Light art installation, Kaohsiung, Taiwan")
+- `icon` (optional; see [Font Awesome](https://fontawesome.com/icons) for icon codes. Example: `fa-github`)
+- `icon-style` (optional; "solid" is default, "regular" for outline style icons, or "brands" for logos)
+- `auto-header` (optional; "use-title" is default, "none" for no header, or custom header text)
+- `hide` (optional; if `true`, the section won't appear)
 
-## Experience
+# Start blogging!
 
-- Teach Assistant of Compilation Principle, [Feb. 2022 - Jun. 2022](https://xianweiz.github.io/teach/dcs290/s2022.html)
-- Teach Assistant of Computer System Organization, Sep. 2021 - Jan. 2022 , Sep. 2022 - Jan. 2023 (expected)
-- Intern of Inference Engine, Speech & Audio Team (Beijing), Bytedance AI Lab, Feb. 2021 - Aug. 2021
-- Leader of [SYSU-SCC](https://github.com/SYSU-SCC), Mar. 2020 - Jul. 2021
+Jekyll has great resources to get you started writing blog posts. Check out [this Jekyll Docs page](https://jekyllrb.com/docs/posts/) first. When you've written a post or two, copy the following into a new file in your project directory called `blog.html`, and you'll see a link to your blog from the homepage:
 
-<!-- .slide -->
+```
+---
+layout: blog
+title: My Blog
+---
+```
 
-## Blogs
+-- and that's it!
 
-- [我的 ASC 决赛复盘：冒险、失误与翻车](https://wu-kan.cn/2021/05/19/%E6%88%91%E7%9A%84ASC%E5%86%B3%E8%B5%9B%E5%A4%8D%E7%9B%98-%E5%86%92%E9%99%A9-%E5%A4%B1%E8%AF%AF%E4%B8%8E%E7%BF%BB%E8%BD%A6/)
-- [今日此时所想之事（二）](https://wu-kan.cn/2021/02/11/%E4%BB%8A%E6%97%A5%E6%AD%A4%E6%97%B6%E6%89%80%E6%83%B3%E4%B9%8B%E4%BA%8B-%E4%BA%8C/)
-- [十月九日](https://wu-kan.cn/2020/10/09/%E5%8D%81%E6%9C%88%E4%B9%9D%E6%97%A5/)
-- [今日此时所想之事](https://wu-kan.cn/2020/01/24/%E4%BB%8A%E6%97%A5%E6%AD%A4%E6%97%B6%E6%89%80%E6%83%B3%E4%B9%8B%E4%BA%8B/)
+# Add a page
 
-<!-- .slide vertical=true -->
+To add a page, just make a new .html or .md file in your project directory. There's an example called `reading-list` [provided](https://github.com/chrisbobbe/jekyll-theme-prologue/blob/master/reading-list.md) with the GitHub repository. Add this frontmatter:
 
-- [基于 Jekyll 搭建个人博客](https://wu-kan.cn/2019/01/18/%E5%9F%BA%E4%BA%8EJekyll%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/)
-- [我的算法竞赛模板](https://wu-kan.cn/2019/02/04/%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E6%A8%A1%E6%9D%BF/)
-- [这一年的一点感想](https://wu-kan.cn/2019/07/18/%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%84%9F%E6%83%B3/)
+```
+---
+title: My New Page
+layout: page
+---
+```
 
-<!-- .slide -->
+You can also set these page variables in the frontmatter, if you want:
+- `subtitle`
+- `order` (orders links in the nav menu, e.g. `1`)
+- `icon` (optional; see [Font Awesome](https://fontawesome.com/icons) for icon codes. Example: `fa-github`)
+- `icon-style` (optional; "solid" is default, "regular" for outline style icons, or "brands" for logos)
+- `hide` (optional; if `true`, a link won't appear in the nav menu. All this does is remove the nav link; your page will still be served to anyone who has the URL.)
 
-## Toolchains
+**This same set of frontmatter variables (including `title`) can also be set in `index.md` and `blog.html`.** You may want to give them titles, or hide the homepage link with `hide: true` if the homepage is the only page.
 
-<!-- .slide vertical=true -->
+For advanced SEO, this theme also lets you add `permalink` (see [Jekyll Docs](https://jekyllrb.com/docs/permalinks/#where-to-configure-permalinks)), `robots` (string, e.g. "noindex, nofollow"), and `canonical` (boolean; true is default) to any page or post.
 
-- **C/C++**, Familiar
-  - **CUDA/HIP/ROCm**, Familiar&Learning
-  - **MPI**, Familiar
-  - **OpenMP**, Familiar
-- **Python**, Familiar
+# Contributing
 
-<!-- .slide vertical=true -->
+Please feel free to submit issues and feature requests!
 
-- **Markdown**, Familiar
-- **$\LaTeX$**, Familiar
-- **Shell**, Familiar&Learning
-- **Git**, Familiar
-- **VSCode**, Familiar
+# Credits
+
+Thanks to @andrewbanchich for his many Jekyll adaptations of HTML5 UP's elegant themes, which helped and inspired me, and of course many thanks to HTML5 UP.
+
+Original README from HTML5 UP:
+
+```
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+
+This is Prologue, a simple, single page responsive site template. It features a
+clean, minimalistic design and a sticky sidebar with navigation-linked scrolling.
+
+Demo content images* are courtesy of the ridiculously talented Felicia Simion. Check out
+more of her amazing work over at deviantART:
+
+http://ineedchemicalx.deviantart.com/
+
+(* = Not included! Only meant for use with my own on-site demo, so please do NOT download
+and/or use any of Felicia's work without her explicit permission!)
+
+Demo banner images* courtesy of Unsplash, a radtastic collection of CC0 (public domain)
+images you can use for pretty much whatever.
+
+(* = Not included)
+
+AJ
+aj@lkn.io | @ajlkn
+
+PS: Not sure how to get that contact form working? Give formspree.io a try (it's awesome).
+
+
+Credits:
+
+	Demo Images:
+		Felicia Simion (ineedchemicalx.deviantart.com)
+		Unsplash (unsplash.com)
+
+	Icons:
+		Font Awesome (fortawesome.github.com/Font-Awesome)
+
+	Other
+		jQuery (jquery.com)
+		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
+		CSS3 Pie (css3pie.com)
+		background-size polyfill (github.com/louisremi)
+		Respond.js (j.mp/respondjs)
+		jquery.scrolly (@ajlkn)
+		jquery.scrollzer (@ajlkn)
+		Skel (skel.io)
+```
